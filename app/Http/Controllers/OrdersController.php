@@ -11,6 +11,7 @@ use App\Http\Requests\Request;
 use App\Jobs\CloseOrder;
 use App\Services\CartService;
 use App\Exceptions\InternalException;
+use App\Services\OrderService;
 
 class OrdersController extends Controller
 {
@@ -21,7 +22,7 @@ class OrdersController extends Controller
 
         return $orderService->store($user, $address, $request->input('remark'), $request->input('items'));
     }
-    
+
     public function index(Request $request)
     {
         $orders = Order::query()
